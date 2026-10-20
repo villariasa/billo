@@ -1,5 +1,5 @@
 {
-  "name": "billo",
+  "name": "zynqelo",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "node node_modules/vite/bin/vite.js build",
     "preview": "node node_modules/vite/bin/vite.js preview",
     "check": "node node_modules/svelte-check/bin/svelte-check --tsconfig ./tsconfig.app.json",
-    "deploy": "npm run build && node -e \"const fs=require('fs'),{execSync}=require('child_process'),d='.deploy_gh_pages';if(fs.existsSync(d))fs.rmSync(d,{recursive:true,force:true});fs.mkdirSync(d);fs.cpSync('dist',d,{recursive:true});fs.writeFileSync(d+'/.nojekyll','');execSync('git init && git checkout -b gh-pages && git add . && git commit -m \\\"deploy: publish to gh-pages\\\" && git remote add origin https://github.com/villariasa/billo.git && git push -u origin gh-pages --force',{cwd:d,stdio:'inherit'});fs.rmSync(d,{recursive:true,force:true});\""
+    "deploy": "npm run build && node -e \"const fs=require('fs'),{execSync}=require('child_process'),d='.deploy_gh_pages';if(fs.existsSync(d))fs.rmSync(d,{recursive:true,force:true});fs.mkdirSync(d);fs.cpSync('dist',d,{recursive:true});fs.writeFileSync(d+'/.nojekyll','');execSync('git init && git checkout -b gh-pages && git add . && git commit -m \\\"deploy: publish to gh-pages\\\" && git remote add origin https://github.com/villariasa/zynqelo.git && git push -u origin gh-pages --force',{cwd:d,stdio:'inherit'});fs.rmSync(d,{recursive:true,force:true});\""
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^7.3.1",

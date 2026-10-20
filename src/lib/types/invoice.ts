@@ -65,7 +65,7 @@ export function getFontStack(id: DocumentFont): string {
 }
 
 /**
- * Receipt layout style: 'clean' is the minimal Billo look; 'pos' mimics a
+ * Receipt layout style: 'clean' is the minimal Zynqelo look; 'pos' mimics a
  * classic thermal point-of-sale sales invoice (monospace, double/dashed
  * dividers, TOTAL DUE block, signature lines).
  */

@@ -4,7 +4,7 @@
   import { Download, Eraser, FileCheck, History, LoaderCircle, Pencil, Save } from 'lucide-svelte'
   import Button from '$lib/components/ui/Button.svelte'
   import Badge from '$lib/components/ui/Badge.svelte'
-  import billoMark from './assets/billo-mark.png'
+  import zynqeloLogo from './assets/zynqelo.png'
   import InvoiceEditor from '$lib/components/editor/InvoiceEditor.svelte'
   import InvoicePreview from '$lib/components/preview/InvoicePreview.svelte'
   import {
@@ -116,9 +116,9 @@
     <div class="mx-auto flex h-14 max-w-480 items-center justify-between gap-3 px-4 sm:px-6">
       <div class="flex min-w-0 items-center gap-2.5">
         <img
-          src={billoMark}
-          alt="Billo"
-          class="h-8 w-auto max-w-28 shrink-0 object-contain sm:h-10 sm:max-w-36"
+          src={zynqeloLogo}
+          alt="Zynqelo"
+          class="h-7 w-auto max-w-32 shrink-0 object-contain sm:h-9 sm:max-w-44"
         />
         <Badge class="hidden md:inline-flex">
           <FileCheck class="h-3 w-3" strokeWidth={1.5} />
@@ -236,6 +236,6 @@
   </main>
 
   <footer class="border-t border-zinc-200/80 py-4 text-center text-xs text-zinc-400 print:hidden">
-    Billo — runs 100% in your browser. Your data never leaves this device.
+    Zynqelo — runs 100% in your browser. Your data never leaves this device.
   </footer>
 </div>

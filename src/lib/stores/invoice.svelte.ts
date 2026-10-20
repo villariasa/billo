@@ -1,9 +1,9 @@
 import type { Invoice, InvoiceItem, PosExtras, ValidationErrors } from '$lib/types/invoice'
 import { safeNumber } from '$lib/utils/currency'
 
-export const DRAFT_KEY = 'billo_draft_v1'
-/** Pre-rebrand key — read as a fallback so existing drafts survive. */
-const LEGACY_DRAFT_KEY = 'quickinvoice_draft_v1'
+export const DRAFT_KEY = 'zynqelo_draft_v1'
+/** Pre-rebrand keys — read as a fallback so existing drafts survive. */
+const LEGACY_DRAFT_KEYS = ['billo_draft_v1', 'quickinvoice_draft_v1']
 
 let idCounter = 0
 export function uid(): string {
@@ -130,7 +130,13 @@ export function saveDraft(): boolean {
 
 export function loadDraft(): Invoice | null {
   try {
-    const raw = localStorage.getItem(DRAFT_KEY) ?? localStorage.getItem(LEGACY_DRAFT_KEY)
+    let raw = localStorage.getItem(DRAFT_KEY)
+    if (!raw) {
+      for (const legacy of LEGACY_DRAFT_KEYS) {
+        raw = localStorage.getItem(legacy)
+        if (raw) break
+      }
+    }
     if (!raw) return null
     const parsed = JSON.parse(raw) as Invoice
     if (!parsed || !Array.isArray(parsed.items) || parsed.items.length === 0) return null
