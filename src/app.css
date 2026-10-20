@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-50/80 font-sans text-zinc-900 antialiased;
+}
+
+/* Hide number-input spinners for a cleaner look (values still keyboard-adjustable) */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/*
+ * Native print fallback: window.print() / Ctrl+P outputs only the invoice
+ * sheet, pixel-perfect, with zero editor UI chrome. The @page size is
+ * injected dynamically from App.svelte to match the selected paper size;
+ * --sheet-w / --sheet-h are set inline on #invoice-sheet.
+ */
+@page {
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #invoice-sheet,
+  #invoice-sheet * {
+    visibility: visible;
+  }
+  /* Neutralize the responsive preview scaling + any clipping ancestors */
+  #sheet-scale {
+    transform: none !important;
+  }
+  #preview-pane,
+  #sheet-scale {
+    position: static !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  #invoice-sheet {
+    position: fixed !important;
+    inset: 0 !important;
+    width: var(--sheet-w, 210mm) !important;
+    min-height: var(--sheet-h, auto) !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+}
